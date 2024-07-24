@@ -18,6 +18,7 @@ class VictimResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'nickname' => $this->nick_name,
             'gender' => $this->gender,
             'x_handle_full' => $this->twitter,
             'x_handle' => $this->x_handle,
