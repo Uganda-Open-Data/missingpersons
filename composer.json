@@ -1,7 +1,7 @@
 {
-    "name": "Uganda Missing Persons",
+    "name": "laravel/laravel",
     "type": "project",
-    "description": "Missing persons datatabase",
+    "description": "Uganda Missing Persons",
     "keywords": ["missing persons", "march to parliament"],
     "license": "MIT",
     "require": {
