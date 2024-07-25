@@ -67,7 +67,7 @@ class User extends Authenticatable implements FilamentUser
     }
 
     public function canAccessFilament():bool {
-        return $this->belongsToTeam(Team::find(1));
+        return $this->current_team_id = 1;
     }
 
     public function canAccessPanel(Panel $panel): bool
