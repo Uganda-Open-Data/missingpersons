@@ -17,17 +17,17 @@ That returns the data of all the missing persons in the format below
       "data": [
         {
             "id": 1,
-            "name": "Reign Omusoyisoyi",
-            "nickname": "",
-            "gender": "Male",
-            "x_handle_full": "https:://x.com/maulanareign256",
-            "x_handle": "@maulanareign256",
-            "photo_url": "https://ms.styxtechgroup.com/media/reign_maulana.jpg",
+            "name": "Jean Namukasa",
+            "nickname": "Mama Jean",
+            "gender": "Female",
+            "x_handle_full": "https:://x.com/jean",
+            "x_handle": "@jean",
+            "photo_url": "https://dashboard.missingpersonsug.org/media/reign_maulana.jpg",
             "status": "Arrested",
-            "holding_location": null,
-            "security_organ": null,
+            "holding_location": "Jinja Road Police Station ",
+            "security_organ": "Police",
             "status_date": "Wed, Jul 24, 2024 9:30 AM",
-            "notes": null
+            "notes": "Was taken away in a drone"
         }
       ]
 }
