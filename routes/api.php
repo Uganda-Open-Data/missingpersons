@@ -1,6 +1,12 @@
 <?php
 
+use App\Enums\Gender;
+use App\Enums\Status;
+use App\Http\Resources\HoldingLocationResource;
+use App\Http\Resources\SecurityOrganResource;
 use App\Http\Resources\VictimResource;
+use App\Models\HoldingLocation;
+use App\Models\SecurityOrgan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -9,21 +15,21 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::get('/victims', function (Request $request) {
-    return VictimResource::collection(App\Models\Victim::all());
+    return VictimResource::collection(App\Models\Victim::paginate());
 });
 
 Route::get('/gender', function (Request $request) {
-    return json_encode(\App\Enums\Gender::cases());
+    return json_encode(Gender::cases());
 });
 
 Route::get('/status', function (Request $request) {
-    return json_encode(\App\Enums\Status::cases());
+    return json_encode(Status::cases());
 });
 
 Route::get('/security-organs', function (Request $request) {
-    return \App\Http\Resources\SecurityOrganResource::collection(\App\Models\SecurityOrgan::all());
+    return SecurityOrganResource::collection(SecurityOrgan::all());
 });
 
 Route::get('/holding-locations', function (Request $request) {
-    return \App\Http\Resources\HoldingLocationResource::collection(\App\Models\HoldingLocation::all());
+    return HoldingLocationResource::collection(HoldingLocation::all());
 });
