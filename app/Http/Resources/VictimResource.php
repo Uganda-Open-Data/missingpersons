@@ -24,6 +24,7 @@ class VictimResource extends JsonResource
             'photo_url' => $this->photo_url,
             'status' => $this->status,
             'holding_location' => $this->holding_location?->name,
+            'last_known_location' => $this->last_known_location,
             'security_organ' => $this->security_organ?->name,
             'time_taken' => $this->status_date?->format('H:i d-m-Y'),
             'time_taken_formatted' => $this->status_date?->toDayDateTimeString(),
