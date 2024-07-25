@@ -1,10 +1,13 @@
 <p align="center"><a href="https://missingpersonsug.org/" target="_blank"><img src="public/media/image_of_person.jpg" width="400" alt="Missing Person in Uganda"></a></p>
 
 ## Missing persons in Uganda Backend
-This is the official backend for the Missing persons UG.
+This is a backend for the Missing persons UG which mirrors the official data file at https://github.com/wkambale/missingpersons/blob/main/data.json
 
 ## How to setup
-It's a Laravel Project so the defaults apply.
+It's a Laravel Project so the defaults apply and the requirements are:
+
+1. PHP 8.2
+2. MySQL 5.7 or 8.x
 
 ## Usage
 It's serves the API for victims. The end point is 
