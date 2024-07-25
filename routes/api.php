@@ -19,11 +19,12 @@ Route::get('/victims', function (Request $request) {
 });
 
 Route::get('/gender', function (Request $request) {
-    return json_encode(Gender::cases());
+
+    return response()->json(["data" => Gender::cases()]);
 });
 
 Route::get('/status', function (Request $request) {
-    return json_encode(Status::cases());
+    return response()->json(["data" => Status::cases()]);
 });
 
 Route::get('/security-organs', function (Request $request) {
