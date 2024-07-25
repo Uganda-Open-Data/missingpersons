@@ -29,6 +29,12 @@ class VictimResource extends JsonResource
             'time_taken' => $this->status_date?->format('H:i d-m-Y'),
             'time_taken_formatted' => $this->status_date?->toDayDateTimeString(),
             'notes' => $this->notes,
+            'remanded_from' => $this->remanded_from?->name,
+            'remanded_to' => $this->remanded_to?->name,
+            'remanded_by' => $this->remanded_by,
+            'remanded_on' => $this->remanded_on?->format('d-m-Y'),
+            'remanded_until' => $this->remanded_until?->format('d-m-Y'),
+            'released_on' => $this->released_on?->format('d-m-Y'),
         ];
     
             
