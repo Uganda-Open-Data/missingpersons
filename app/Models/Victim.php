@@ -67,11 +67,11 @@ class Victim extends Model
     }
 
     public function remandedFrom(): BelongsTo {
-        return $this->belongsTo(HoldingLocation::class);
+        return $this->belongsTo(HoldingLocation::class, 'remanded_from_id');
     }
 
     public function remandedTo(): BelongsTo {
-        return $this->belongsTo(HoldingLocation::class);
+        return $this->belongsTo(HoldingLocation::class, 'remanded_to_id');
     }
 
     public function getTwitterAttribute(): string {
