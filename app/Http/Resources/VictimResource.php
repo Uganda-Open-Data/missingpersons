@@ -31,6 +31,6 @@ class VictimResource extends JsonResource
             'notes' => $this->notes,
         ];
     
-           
+            
     }
 }
