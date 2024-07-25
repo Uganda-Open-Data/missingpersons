@@ -2,6 +2,7 @@
 
 use App\Enums\Gender;
 use App\Enums\Status;
+use App\Http\Controllers\VictimStatistics;
 use App\Http\Resources\HoldingLocationResource;
 use App\Http\Resources\SecurityOrganResource;
 use App\Http\Resources\VictimResource;
@@ -34,3 +35,5 @@ Route::get('/security-organs', function (Request $request) {
 Route::get('/holding-locations', function (Request $request) {
     return HoldingLocationResource::collection(HoldingLocation::all());
 });
+
+Route::get('/victim-statistics', VictimStatistics::class);

@@ -30,5 +30,7 @@ class VictimResource extends JsonResource
             'time_taken_formatted' => $this->status_date?->toDayDateTimeString(),
             'notes' => $this->notes,
         ];
+    
+            
     }
 }
