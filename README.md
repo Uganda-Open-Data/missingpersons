@@ -21,32 +21,30 @@ The api base url is `https://dashboard.missingpersonsug.org/api/`
 The list of victims
 `https://dashboard.missingpersonsug.org/api/victims`
 
-    **Example**
+**Example**
 
-    `GET https://dashboard.missingpersonsug.org/api/victims`
+`GET https://dashboard.missingpersonsug.org/api/victims`
 
-    Expect JSON data in the following structure
-
-    ```
-    {
-          "data": [
-            {
-                "id": 1,
-                "name": "Jean Namukasa",
-                "nickname": "Mama Jean",
-                "gender": "Female",
-                "x_handle_full": "https:://x.com/jean",
-                "x_handle": "@jean",
-                "photo_url": "https://dashboard.missingpersonsug.org/media/reign_maulana.jpg",
-                "status": "Arrested",
-                "holding_location": "Jinja Road Police Station ",
-                "security_organ": "Police",
-                "status_date": "Wed, Jul 24, 2024 9:30 AM",
-                "notes": "Was taken away in a drone"
-            }
-          ]
-    }
-    ```
+```json
+{
+      "data": [
+        {
+            "id": 1,
+            "name": "Jean Namukasa",
+            "nickname": "Mama Jean",
+            "gender": "Female",
+            "x_handle_full": "https:://x.com/jean",
+            "x_handle": "@jean",
+            "photo_url": "https://dashboard.missingpersonsug.org/media/reign_maulana.jpg",
+            "status": "Arrested",
+            "holding_location": "Jinja Road Police Station ",
+            "security_organ": "Police",
+            "status_date": "Wed, Jul 24, 2024 9:30 AM",
+            "notes": "Was taken away in a drone"
+        }
+      ]
+}
+```
   
 2. Limiting returned items
 
@@ -78,17 +76,53 @@ The list of victims
       
       `GET https://dashboard.missingpersonsug.org/api/victims?sort=-name`
 
+4. Pagination is also provided under the `links` and `meta` elements providing counts of the records, which page a user is on etc
 
-
-The API end-point also provides sorting, filtering and limiting the number of records returned as follows:
-
-1. 50 records will be returned per page by default which can be changed by using the per_page query parameter
-   e.g., `per_page=25` returns 25 records per page
-2. Sorting will be by field, sent as a request parameter for example `sort=name` which sorts in ascending order, adding
-   a '-' sorts in descending order e.g., `sort=-name`
-3. Filtering is done by an array in the request parameters
-   e.g., `?filter[status]=Remanded&filter[holding_location_id]=1`
-4. Pagination is also provided under the `meta` element providing counts of the records, which page a user is on etc
+````json
+"links": {
+    "first": "https:\/\/missingpersons.test\/api\/victims?page=1",
+    "last": "https:\/\/missingpersons.test\/api\/victims?page=3",
+    "prev": null,
+    "next": "https:\/\/missingpersons.test\/api\/victims?page=2"
+  },
+    
+  "meta": {
+    "current_page": 1,
+    "from": 1,
+    "last_page": 3,
+    "links": [
+      {
+        "url": null,
+        "label": "&laquo; Previous",
+        "active": false
+      },
+      {
+        "url": "https:\/\/missingpersons.test\/api\/victims?page=1",
+        "label": "1",
+        "active": true
+      },
+      {
+        "url": "https:\/\/missingpersons.test\/api\/victims?page=2",
+        "label": "2",
+        "active": false
+      },
+      {
+        "url": "https:\/\/missingpersons.test\/api\/victims?page=3",
+        "label": "3",
+        "active": false
+      },
+      {
+        "url": "https:\/\/missingpersons.test\/api\/victims?page=2",
+        "label": "Next &raquo;",
+        "active": false
+      }
+    ],
+    "path": "https:\/\/missingpersons.test\/api\/victims",
+    "per_page": 50,
+    "to": 50,
+    "total": 125
+  }
+````
 
 ### Status
 
