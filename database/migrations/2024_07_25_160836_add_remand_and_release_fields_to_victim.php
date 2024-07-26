@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::table('victims', function (Blueprint $table) {
             //
-            $table->unsignedBigInteger('remanded_from_id');
-            $table->unsignedBigInteger('remanded_to_id');
+            $table->unsignedBigInteger('remanded_from_id')->nullable();
+            $table->unsignedBigInteger('remanded_to_id')->nullable();
             $table->date('remanded_on')->nullable();
             $table->date('remanded_until')->nullable();
             $table->text('remanded_by')->nullable(); // The Judge
