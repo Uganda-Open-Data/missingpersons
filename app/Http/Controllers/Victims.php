@@ -24,14 +24,18 @@ class Victims extends Controller
         $victimsQuery = QueryBuilder::for(Victim::class)
             ->allowedFilters([
                 AllowedFilter::exact('status'),
-                AllowedFilter::exact('gender')
+                AllowedFilter::exact('gender'),
+                AllowedFilter::exact('security_organ_id'),
+                AllowedFilter::exact('holding_location_id'),
             ])
             ->allowedSorts(
                 'name',
+                'status',
                 'security_organ_id',
                 'holding_location_id',
-                'status_date')->paginate($per_page)
-                ->appends(request()->query());
+                'status_date')
+            ->paginate($per_page)
+            ->appends(request()->query());
 
         return VictimResource::collection($victimsQuery);
     }
