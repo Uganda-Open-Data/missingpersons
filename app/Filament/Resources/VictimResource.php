@@ -62,7 +62,25 @@ class VictimResource extends Resource
                     ->options(HoldingLocation::all()->pluck('name', 'id'))
                     ->searchable(),
                 Forms\Components\TextInput::make('last_known_location')
+                    ->label("Last Known Location")
                     ->maxLength(255),
+                Forms\Components\Select::make('remanded_from_id')
+                    ->label("Remanded From (Court Name)")
+                    ->options(HoldingLocation::all()->pluck('name', 'id'))
+                    ->searchable(), 
+                Forms\Components\TextInput::make('remanded_by')
+                    ->label("Remanded By (Judge Name)")
+                    ->maxLength(255), 
+                Forms\Components\Select::make('remanded_to_id')
+                    ->label("Remanded To")
+                    ->options(HoldingLocation::all()->pluck('name', 'id'))
+                    ->searchable(),
+                Forms\Components\DatePicker::make('remanded_on')
+                    ->label("Remanded On"),
+                Forms\Components\DatePicker::make('remanded_until')
+                    ->label("Remanded Until"),
+                Forms\Components\DatePicker::make('released_on')
+                    ->label("Released On"),
                 Forms\Components\RichEditor::make('notes'),
                 Forms\Components\Toggle::make('confirmed')
                     ->onColor('success')

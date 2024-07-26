@@ -31,7 +31,13 @@ class Victim extends Model
         'status_date',
         'security_organ_id',
         'confirmed',
-        'photo'
+        'photo',
+        'remanded_from_id',
+        'remanded_by',
+        'remanded_to_id',
+        'remanded_on',
+        'remanded_until',
+        'released_on',
     ];
     /**
      * The attributes that should be cast.
@@ -42,7 +48,10 @@ class Victim extends Model
         'confirmed' => 'boolean',
         'gender' => Gender::class,
         'status' => Status::class,
-        'status_date' => 'datetime'
+        'status_date' => 'datetime',
+        'remanded_on' => 'date',
+        'released_on' => 'date',
+        'remanded_until' => 'date',
     ];
 
     public function getPhotoUrlAttribute(): string {
@@ -55,6 +64,14 @@ class Victim extends Model
 
     public function securityOrgan(): BelongsTo {
         return $this->belongsTo(SecurityOrgan::class);
+    }
+
+    public function remandedFrom(): BelongsTo {
+        return $this->belongsTo(HoldingLocation::class, 'remanded_from_id');
+    }
+
+    public function remandedTo(): BelongsTo {
+        return $this->belongsTo(HoldingLocation::class, 'remanded_to_id');
     }
 
     public function getTwitterAttribute(): string {
