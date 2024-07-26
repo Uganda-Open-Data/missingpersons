@@ -4,22 +4,16 @@ namespace App\Filament\Resources;
 
 use App\Enums\Gender;
 use App\Enums\Status;
-use App\Filament\Resources\ActivityResource\Pages\CreateActivity;
-use App\Filament\Resources\ActivityResource\Pages\EditActivity;
-use App\Filament\Resources\ActivityResource\Pages\ListActivities;
 use App\Filament\Resources\VictimResource\Pages;
-use App\Filament\Resources\VictimResource\RelationManagers;
 use App\Models\HoldingLocation;
 use App\Models\SecurityOrgan;
 use App\Models\Victim;
 use Filament\Forms;
-use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Actions\Action;
-use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Enums\ActionsPosition;
+use Filament\Tables\Enums\FiltersLayout;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Contracts\Support\Htmlable;
@@ -91,9 +85,9 @@ class VictimResource extends Resource
                 Tables\Columns\ImageColumn::make('photo')->disk('media'),
                 Tables\Columns\TextColumn::make('status')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('security_organ.name')
+                Tables\Columns\TextColumn::make('securityOrgan.name')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('holding_location.name')
+                Tables\Columns\TextColumn::make('holdingLocation.name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('notes')
                     ->searchable()
@@ -104,7 +98,15 @@ class VictimResource extends Resource
             ->filters([
                 SelectFilter::make('status')
                     ->options(Status::class),
-            ])
+                SelectFilter::make('gender')
+                    ->options(Gender::class),
+                SelectFilter::make('security_organ_id')
+                    ->label("Security Organ")
+                    ->options(SecurityOrgan::all()->pluck('name', 'id')),
+                SelectFilter::make('holding_location_id')
+                    ->label("Holding Location")
+                    ->options(HoldingLocation::all()->pluck('name', 'id'))
+            ], layout: FiltersLayout::AboveContent)
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
@@ -130,11 +132,6 @@ class VictimResource extends Resource
             'view' => Pages\ViewVictim::route('/{record}'),
             'edit' => Pages\EditVictim::route('/{record}/edit'),
         ];
-    }
-
-    protected function getTableFiltersLayout(): ?string
-    {
-        return Layout::AboveContent;
     }
 
     protected function shouldPersistTableFiltersInSession(): bool
