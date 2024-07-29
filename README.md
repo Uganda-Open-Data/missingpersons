@@ -46,7 +46,7 @@ The list of victims
 }
 ```
   
-2. Limiting returned items
+2. Pagination
 
     You can use the `per_page` URL param to change the number of items returned in a request
 
@@ -59,6 +59,53 @@ The list of victims
     - _Retrieve 10 items_
     
       `GET https://dashboard.missingpersonsug.org/api/victims?per_page=10`
+
+    ```json
+    {
+        "links": {
+            "first": "https:\/\/missingpersons.test\/api\/victims?page=1",
+            "last": "https:\/\/missingpersons.test\/api\/victims?page=3",
+            "prev": null,
+            "next": "https:\/\/missingpersons.test\/api\/victims?page=2"
+          }, 
+          "meta": {
+            "current_page": 1,
+            "from": 1,
+            "last_page": 3,
+            "links": [
+              {
+                "url": null,
+                "label": "&laquo; Previous",
+                "active": false
+              },
+              {
+                "url": "https:\/\/missingpersons.test\/api\/victims?page=1",
+                "label": "1",
+                "active": true
+              },
+              {
+                "url": "https:\/\/missingpersons.test\/api\/victims?page=2",
+                "label": "2",
+                "active": false
+              },
+              {
+                "url": "https:\/\/missingpersons.test\/api\/victims?page=3",
+                "label": "3",
+                "active": false
+              },
+              {
+                "url": "https:\/\/missingpersons.test\/api\/victims?page=2",
+                "label": "Next &raquo;",
+                "active": false
+              }
+            ],
+            "path": "https:\/\/missingpersons.test\/api\/victims",
+            "per_page": 50,
+            "to": 50,
+            "total": 125
+          }
+        }
+     ```
 
 3. Sorting items
 
@@ -77,52 +124,6 @@ The list of victims
       `GET https://dashboard.missingpersonsug.org/api/victims?sort=-name`
 
 4. Pagination is also provided under the `links` and `meta` elements providing counts of the records, which page a user is on etc
-
-````json
-"links": {
-    "first": "https:\/\/missingpersons.test\/api\/victims?page=1",
-    "last": "https:\/\/missingpersons.test\/api\/victims?page=3",
-    "prev": null,
-    "next": "https:\/\/missingpersons.test\/api\/victims?page=2"
-  },
-    
-  "meta": {
-    "current_page": 1,
-    "from": 1,
-    "last_page": 3,
-    "links": [
-      {
-        "url": null,
-        "label": "&laquo; Previous",
-        "active": false
-      },
-      {
-        "url": "https:\/\/missingpersons.test\/api\/victims?page=1",
-        "label": "1",
-        "active": true
-      },
-      {
-        "url": "https:\/\/missingpersons.test\/api\/victims?page=2",
-        "label": "2",
-        "active": false
-      },
-      {
-        "url": "https:\/\/missingpersons.test\/api\/victims?page=3",
-        "label": "3",
-        "active": false
-      },
-      {
-        "url": "https:\/\/missingpersons.test\/api\/victims?page=2",
-        "label": "Next &raquo;",
-        "active": false
-      }
-    ],
-    "path": "https:\/\/missingpersons.test\/api\/victims",
-    "per_page": 50,
-    "to": 50,
-    "total": 125
-  }
-````
 
 ### Status
 
