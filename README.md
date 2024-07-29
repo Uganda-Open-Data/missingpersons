@@ -231,4 +231,34 @@ This is a summary of statistics on the victims at `https://dashboard.missingpers
 
 ```
 
+5. Filtering
 
+    The API supports Associative Array notation to filter.
+    
+    Use the `filter[key]` URL param to return specific items
+
+    Where the `key` can be replaced with `status` or `holding_location_id`
+
+    `filter[key]` supports one of the following options. 
+      
+    - status: `filter[status] = Remanded or Arrested or Missing or Released or Fallen`
+
+    - holding_location_id: `filter[holding_location_id] = 1`
+      
+    **Examples:**
+
+    - _Filter by status_
+
+        Remanded
+        
+        `GET https://dashboard.missingpersonsug.org/api/victims?filter[status]=Remanded`
+
+        Arrasted
+        
+        `GET https://dashboard.missingpersonsug.org/api/victims?filter[status]=Arrested`
+
+    - _Filter by Holding Location_
+
+        Holding Location
+        
+        `GET https://dashboard.missingpersonsug.org/api/victims?filter[holding_location_id]=1`
