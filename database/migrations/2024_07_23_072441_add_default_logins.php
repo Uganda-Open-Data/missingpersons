@@ -19,7 +19,7 @@ return new class extends Migration
             'id' => '1',
             'name' => 'System Admin',
             'email' => 'ms@styxtechgroup.com',
-            'password' => Hash::make('Admin123'),
+            'password' => Hash::make('XXXX'),
             'current_team_id' => '1',
             'created_at' => now()
         ]);
@@ -27,7 +27,7 @@ return new class extends Migration
             'id' => '2',
             'name' => 'Wesley Kambale',
             'email' => 'spartanwk@gmail.com',
-            'password' => Hash::make('Kambale123'),
+            'password' => Hash::make('XXXX'),
             'current_team_id' => '1',
             'created_at' => now()
         ]);
@@ -35,7 +35,7 @@ return new class extends Migration
             'id' => '3',
             'name' => 'Stephen Musoke',
             'email' => 'ssmusoke@gmail.com',
-            'password' => Hash::make('Admin123'),
+            'password' => Hash::make('XXXX'),
             'current_team_id' => '1',
             'created_at' => now()
         ]);
