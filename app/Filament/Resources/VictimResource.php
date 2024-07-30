@@ -67,10 +67,10 @@ class VictimResource extends Resource
                 Forms\Components\Select::make('remanded_from_id')
                     ->label("Remanded From (Court Name)")
                     ->options(HoldingLocation::all()->pluck('name', 'id'))
-                    ->searchable(), 
+                    ->searchable(),
                 Forms\Components\TextInput::make('remanded_by')
                     ->label("Remanded By (Judge Name)")
-                    ->maxLength(255), 
+                    ->maxLength(255),
                 Forms\Components\Select::make('remanded_to_id')
                     ->label("Remanded To")
                     ->options(HoldingLocation::all()->pluck('name', 'id'))
